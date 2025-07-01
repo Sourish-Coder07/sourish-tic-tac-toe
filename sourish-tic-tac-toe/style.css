@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: url('https://www.transparenttextures.com/patterns/asfalt-light.png'), linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.game-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.rainbow-text {
+  background: linear-gradient(45deg, #ff0057, #ff7a00, #fffa00, #00ff6a, #00cfff, #8000ff);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowMove 5s linear infinite;
+  font-weight: bold;
+}
+
+@keyframes rainbowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.cell {
+  background: url('https://www.transparenttextures.com/patterns/white-carbon.png'), #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.4s;
+  animation: popIn 0.4s ease;
+}
+
+.cell:hover {
+  background-color: #ffeaa7;
+  transform: scale(1.08);
+}
+
+.cell.winner {
+  background: linear-gradient(45deg, #81ecec, #74b9ff);
+  color: #2d3436;
+  animation: blink 1s infinite;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% { opacity: 0.6; }
+}
+
+#status {
+  font-size: 1.3rem;
+  color: #2d3436;
+  margin-bottom: 15px;
+  animation: bounceIn 1s ease;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+button {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #f953c6, #b91d73);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to right, #b91d73, #f953c6);
+}
